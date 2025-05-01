@@ -1,0 +1,17 @@
+﻿@model controlRateSystem.Data.Models.Category
+
+@{
+    ViewData["Title"] = "Підтвердження видалення категорії";
+}
+
+<h1>Ви справді хочете видалити дану категорію?</h1>
+
+<div>
+    <strong>@Model.Name</strong>
+</div>
+
+<form method="post">
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="@Url.Action("Index", "Category")" class="btn btn-secondary ml-2">Cancel</a>
+</form>

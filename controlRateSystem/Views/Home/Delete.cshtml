@@ -1,0 +1,17 @@
+﻿@model controlRateSystem.Data.Models.Currency
+
+
+@{
+    ViewData["Title"] = "Видалити валюту";
+}
+
+<div class="container mt-4">
+    <h2 class="text-danger">Підтвердження видалення</h2>
+    <p>Ви впевнені, що хочете видалити валюту <strong>@Model.Name</strong> (@Model.Code)?</p>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Так, видалити</button>
+        <a asp-action="Index" class="btn btn-secondary ms-2">Скасувати</a>
+    </form>
+</div>

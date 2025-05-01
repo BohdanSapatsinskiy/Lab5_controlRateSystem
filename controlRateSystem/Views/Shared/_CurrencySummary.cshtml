@@ -1,0 +1,36 @@
+﻿@model controlRateSystem.Data.Models.Currency
+
+<a asp-action="Details" asp-route-id="@Model.Id" class="text-decoration-none text-dark">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div class="d-flex flex-column flex-grow-1">
+            <strong>@Model.Name</strong>
+            <small class="text-muted">(@Model.Code)</small>
+        </div>
+        <span class="badge bg-primary rounded-pill">
+            @{
+                string priceString = Model.PriceInDollar.ToString("G");
+
+                var priceParts = priceString.Split(',');
+
+                if (priceParts.Length > 1)
+                {
+                    var fractionalPart = priceParts[1];
+                    if (fractionalPart.Length > 2 && fractionalPart[2] != '0')
+                    {
+                        priceString = Model.PriceInDollar.ToString("F4");
+                    }
+                    else
+                    {
+                        priceString = Model.PriceInDollar.ToString("F2");
+                    }
+                }
+                else
+                {
+                    priceString = Model.PriceInDollar.ToString("F2");
+                }
+            }
+            @priceString
+        </span>
+    </li>
+</a>
+

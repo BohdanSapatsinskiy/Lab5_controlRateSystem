@@ -1,0 +1,41 @@
+﻿@model controlRateSystem.Data.Models.Currency
+
+@{
+    ViewData["Title"] = "Edit Currency";
+}
+
+@using (Html.BeginForm("Edit", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label for="Name">Currency Name</label>
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Enter currency name" })
+        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="Code">Currency Code</label>
+        @Html.TextBoxFor(m => m.Code, new { @class = "form-control", placeholder = "Enter currency code" })
+        @Html.ValidationMessageFor(m => m.Code, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="CategoryId">Category</label>
+        @Html.DropDownListFor(m => m.CategoryId, new SelectList(ViewBag.Categories, "Id", "Name", Model.CategoryId), "- Select Category -", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="PriceInDollar">Price in Dollar</label>
+        @Html.TextBoxFor(m => m.PriceInDollar, new { @class = "form-control", placeholder = "Enter price in dollars" })
+        @Html.ValidationMessageFor(m => m.PriceInDollar, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a href="@Url.Action("Index")" class="btn btn-secondary ml-2">Cancel</a>
+}
+
+
+
+

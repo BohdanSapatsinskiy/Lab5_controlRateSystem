@@ -1,0 +1,33 @@
+﻿@model controlRateSystem.Models.ViewModels.UserProfileModel
+@{
+    ViewData["Title"] = "Особистий кабінет";
+}
+
+<h2 class="mb-4">Особистий кабінет</h2>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+
+<form asp-action="UserProfile" method="post">
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">Електронна пошта</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="NewPassword" class="form-label">Новий пароль</label>
+        <input asp-for="NewPassword" class="form-control" />
+        <span asp-validation-for="NewPassword" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ConfirmPassword" class="form-label">Підтвердження паролю</label>
+        <input asp-for="ConfirmPassword" class="form-control" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Зберегти зміни</button>
+</form>

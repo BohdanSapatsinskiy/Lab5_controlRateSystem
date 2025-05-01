@@ -1,0 +1,22 @@
+﻿@model List<controlRateSystem.Data.Models.Category>
+
+@{
+    var selectedCategoryId = ViewData["SelectedCategoryId"] as int?;
+}
+
+<div class="navigation-menu">
+    <div class="btn-group-vertical" role="group" aria-label="Navigation Menu">
+        @foreach (var category in Model)
+        {
+            var isActive = selectedCategoryId.HasValue && selectedCategoryId.Value == category.Id;
+            var btnClass = isActive
+            ? "btn btn-primary mb-2"        
+            : "btn btn-outline-primary mb-2";
+
+            <a href="@Url.Action("Index", "Home", new { selectedCategoryId = category.Id })"
+               class="@btnClass">
+                @category.Name
+            </a>
+        }
+    </div>
+</div>
